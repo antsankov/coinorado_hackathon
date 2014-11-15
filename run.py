@@ -36,8 +36,6 @@ def parser(origination_number,input,bank):
 
     #looks up the person from the bank based on their origination number
     # user = bank.get_person(origination_number)
-
-    return ("INPUT IS: " + input)
     
     #split the input 
     mod_input = input.split()
