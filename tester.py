@@ -8,9 +8,9 @@ def tester():
     #adds a user
     #alex
     print(parser("+17208378697","create 2666f08a-bfbb-42fb-80f8-e1ef974d5343 1Edw3z8dkgjqch5UFvkgBuUeaP2mAU2LvT 1234567890", test_bank))
-    #sam
+    #sam create 2666f08a-bfbb-42fb-80f8-e1ef974d5343 1Edw3z8dkgjqch5UFvkgBuUeaP2mAU2LvT 1234567890
     print(parser("+17209991335","create 4620ffe2-86d6-4b63-ac16-4b8decfaa6f5 1KoQFBAEASCykCmnvK4kz7FRV4a1bqQu1Q Boondock2013", test_bank))
-    #cris
+    #C1rissalazar       
     print(parser("+15122842178","create c972c797-2595-4fb6-91e4-0547ef268c80 1G4kUxVk8wEfKCwNehmP9Fot4pAnAJMAaY C1rissalazar", test_bank))
 
     #gives their acount_info alex

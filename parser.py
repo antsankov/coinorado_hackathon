@@ -139,5 +139,7 @@ def parser(origination_number,input,bank):
             # 5. the percent to transfer
 
         #account_to_person(account,desitnation_phone,permission,actual_amount)
+    else:
+        return "Unknown verb!"
 
 
