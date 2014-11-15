@@ -24,19 +24,20 @@ def bank_init():
     return test_bank
 
 
-# def parser(origination_number,input,bank):
-#     if(not(origination_number in bank.people.keys())):
-#         test_person = persons(origination_number)
-#         bank.add_person(origination_number)
-#     else:
-#         test_person = bank.get_person(origination_number)
+def parser(origination_number,input,bank):
+    if(not(origination_number in bank.people.keys())):
+        test_person = persons(origination_number)
+        bank.add_person(origination_number)
+    else:
+        test_person = bank.get_person(origination_number)
 
-#     #looks up the person from the bank based on their origination number
-#     # user = bank.get_person(origination_number)
+    #looks up the person from the bank based on their origination number
+    # user = bank.get_person(origination_number)
     
-#     #split the input 
-#     mod_input = input.split()
-#     verb = mod_input[0]
+    #split the input 
+    mod_input = input.split()
+    verb = mod_input[0]
+    print("HELLO FUCK")
     
 #     #WITHDRAW
 #     if (verb == "withdraw"):
@@ -108,9 +109,10 @@ def returner(bank,debug):
     messages = client.messages.list() 
     for m in messages:
         if (m.direction == 'inbound' and debug == False):
+            print("hello world returner")
             #you need to use m.from_ NOT m.From, this causes 
-            #return parser(m.from_,m.body,bank)
-            return "shit"
+            return parser(m.from_,m.body,bank)
+            #return "shit"
 
         if (m.direction == 'inbound' and debug == True):
             #you need to use m.from_ NOT m.From, this causes keyword error  
@@ -122,9 +124,9 @@ def returner(bank,debug):
 # #this is the responder function 
 def responder():
     resp = twilio.twiml.Response()
-    # resp.message(returner(test_bank,False))
+    resp.message(returner(test_bank,False))
     #return str(resp)
-    return "HELLO WORLD 2"
+    return "HELLO WORLD 3"
 
 @app.route("/debug", methods=['GET', 'POST'])
 
