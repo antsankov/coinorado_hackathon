@@ -1,13 +1,16 @@
 import random
 from account import account
 import bitcoinpy.keyUtils
+from blockchain.wallet import Wallet
+import blockchain.createwallet
 
 class persons:
 
 	def __init__(self, phone):
 		self.phone = phone
 		# self.password = create_password()
-		self.wallet = Wallet.__init__('team_moorhead_' + self.account_id, '1234567890asdfghjkl')
+		temp = create_wallet('Boondock2013', 'bitcoin')
+		self.wallet = Wallet(temp.identifier, 'Boondock2013')
 		self.address = self.wallet.new_address()
 		self.waccounts = []
 		self.daccounts = []
