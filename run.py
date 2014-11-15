@@ -123,7 +123,7 @@ def returner(bank,debug):
 
 # #this is the responder function 
 def responder():
-    #resp = twilio.twiml.Response()
+    resp = twilio.twiml.Response()
     #resp.message(returner(test_bank,False))
     #return str(resp)
     return "HELLO WORLD 4"
