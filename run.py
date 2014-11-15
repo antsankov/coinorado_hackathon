@@ -79,10 +79,8 @@ def parser(origination_number,input,bank):
         phone_number = mod_input[1]
         if (not(phone_number in bank.people.keys())):
             bank.add_person(phone_number)
-            return "Successfully added person with wallet of: " + bank.get_person(phone_number).address
-
-        elif(phone_number == None):
-            return "Must give phone number of new user"
+            return ("Successfully added person with wallet of: " + str(bank.get_person(phone_number)))
+        
         else:
             return "User has already been created"
 
