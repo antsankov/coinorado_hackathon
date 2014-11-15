@@ -16,6 +16,7 @@ AUTH_TOKEN = "bc96d318cbda7ef495f1418baed042f4"
  
 client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 app = Flask(__name__)
+test_bank = bank()
 
 def bank_init():
     test_bank = bank()
@@ -105,7 +106,7 @@ def parser(origination_number,input,bank):
 
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
 def returner(bank,debug):
-    #messages = client.messages.list() 
+    # messages = client.messages.list() 
     return "FUCK"
     # for m in messages:
     #     if (m.direction == 'inbound' and debug == False):
@@ -125,7 +126,7 @@ def returner(bank,debug):
 def responder():
     resp = twilio.twiml.Response()
     resp.message("HOWDY")
-    return str(resp)
+    resp.message(returner(test_bank,False))
     #return "HELLO WORLD 4"
 
 @app.route("/debug", methods=['GET', 'POST'])
@@ -138,7 +139,7 @@ def debugger():
 
 # #this gets the server running.
 if __name__ == "__main__":
-    test_bank = bank_init()
+#    test_bank = bank_init()
 #     # print (parser("1111111","withdraw 555 48758475"))
 #     # print (parser("2222222","deposit 555 488923478923"))
     app.run(debug=True)
