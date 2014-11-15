@@ -6,8 +6,10 @@ import blockchain.createwallet
 
 class account:
 
+
+
 	def __init__(self):
-		self.account_id = create_id()
+		self.account_id = self.create_id()
 		self.withdrawers = []
 		self.depositers = []
 		temp = blockchain.createwallet.create_wallet('Boondock2013', 'c62026c6-89e3-4200-93a9-f51250ad1ea5')
@@ -20,7 +22,7 @@ class account:
 		for i in range(0,15):
 			id = id + str(random.randint(0,9))
 		return id
-
+	
 	def add_withdrawer(self, person):
 		self.withdrawers.append(person)
 

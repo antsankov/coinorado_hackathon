@@ -46,8 +46,11 @@ def returner(bank,debug):
 
 def tester():
     #our m.from: +17208378697 m.body: what we want, bank
+    
+    #adds a user
     print(parser("+17208378697","add +17208378675",test_bank))
     print(parser("+17208378697","add +17208378675",test_bank))
+    print(parser("+17208378697","create +17208378675",test_bank))
 
 
 #this is the responder function 

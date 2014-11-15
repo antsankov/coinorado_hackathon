@@ -63,7 +63,7 @@ def parser(origination_number,input,bank):
     #CREATE
     if(verb == "create"):
         phone_number = mod_input[1]
-        bank.add_account(phone_number)
-
+        id = bank.add_account(phone_number)
+        return id 
     else:
         return "Unknown if withdrawl or deposit!"

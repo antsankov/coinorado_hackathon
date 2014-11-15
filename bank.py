@@ -20,13 +20,13 @@ class bank:
 	def add_person(self, phone):
 		p = {phone : persons(phone)}
 		self.people.update(p)
-		
 
 	def add_account(self, phone_number):
 		temp_a = account()
 		self.atop.update({temp_a : self.get_person(phone_number)})
 		a = {temp_a.account_id : temp_a}
 		self.accounts.update(a)
+		return temp_a.account_id
 
 	def get_account(self, account_id):
 		return self.accounts[account_id]
