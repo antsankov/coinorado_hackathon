@@ -14,6 +14,10 @@ def parser(origination_number,input,bank):
     mod_input = input.split()
     verb = mod_input[0]
     
+    
+    if (verb == "my_number"):
+        return origination_number
+
     #CREATE
     if(verb == "create"):
         # phone_number = origination_number
@@ -25,7 +29,9 @@ def parser(origination_number,input,bank):
         act = bank.get_account(origination_number)
         return "account created for {0}".format(act.account_id)
 
+    
     caller = bank.get_account(origination_number)
+    
     #Amount account
     if (verb == "balance"):
         #account = mod_input[1]
