@@ -9,6 +9,7 @@ from twilio.rest import TwilioRestClient
 from persons import persons
 from bank import bank
 from account import account
+import transaction
 
 ACCOUNT_SID = "AC2a9e06ea97e4a1a785361f0e8064e870" 
 AUTH_TOKEN = "bc96d318cbda7ef495f1418baed042f4" 
@@ -23,14 +24,19 @@ def space(return_string, input):
 
 def bank_init():
     test_bank = bank()
-    test_bank.addPerson('+17208378697')
+    # test_person = person('+17208378697')
+    # test_bank.addPerson('+17208378697', test_person)
     return test_bank
 
-def parser(origination_number,input):
+def parser(origination_number,input,bank):
+    if(not(origination_number in bank.people.keys())):
+        test_person = persons(origination_number)
+        bank.addPerson(origination_number, test_person)
+    else:
+        test_person = bank.get_person(origination_number)
 
-    person = persons(origination_number)
     #looks up the person from the bank based on their origination number
-    user = bank.get_person(origination_number)
+    # user = bank.get_person(origination_number)
     
     #split the input 
     mod_input = input.split()
@@ -43,13 +49,13 @@ def parser(origination_number,input):
     if (verb == "withdraw"):
 
         #check if the user has the account that they want to draw from 
-        if (user.waccounts.contains(accountID)):
+        if (accountID in user.waccounts ):
             
             #get the actual account from the bank 
             account = bank.get_account(accountID)
 
-            if (account.hasFunds(amount)):
-                account.get_withdrawl(amount)
+            if (hasFunds(amount, account)):
+                withdraw(account, test_person, amount)
                 return "SUCCESS " + input
 
         else:
@@ -59,25 +65,28 @@ def parser(origination_number,input):
     #this checks if we have a w or d 
     if (verb == "deposit"):
 
-        if (user.daccounts.contains(accountID)):
+        if ( accountID in test_person.daccounts):
             
             account = bank.get_account(accountID)
-            account.do_deposit(amount)
+            deposit(account,test_person,amount)
             return "SUCCESS " + input
 
         else:
             return "Invalid/Unknown account"
 
+    if (verb == "add"):
+        return "added a motherfucker"
+
     else:
         return "Unknown if withdrawl or deposit!"
 
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
-def returner():
+def returner(bank):
     messages = client.messages.list() 
     for m in messages:
         if (m.direction == 'inbound'):
             #you need to use m.from_ NOT m.From, this causes 
-            return parser(m.from_,m.body)
+            return parser(m.from_,m.body,bank)
  
 #this is the main route with the two possible verbs 
 @app.route("/", methods=['GET', 'POST'])
@@ -86,13 +95,13 @@ def returner():
 def responder():
     test_bank = bank_init()
     resp = twilio.twiml.Response()
-    resp.message(returner())
+    resp.message(returner(test_bank))
     return str(resp)
 
 
 #this gets the server running.
 if __name__ == "__main__":
-    print (parser("1111111","withdraw 555 48758475"))
-    print (parser("2222222","deposit 555 488923478923"))
+    # print (parser("1111111","withdraw 555 48758475"))
+    # print (parser("2222222","deposit 555 488923478923"))
     app.run(debug=True)
 

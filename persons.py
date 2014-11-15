@@ -1,44 +1,25 @@
 import random
-from bank import bank
 from account import account
 import bitcoinpy.keyUtils
 
 class persons:
 
-	def __init__(self, phone, permissions):
+	def __init__(self, phone):
 		self.phone = phone
-		#self.permissions = permissions
-		self.id = create_id()
-		self.password = create_password()
-		self.wallet = create_wallet()
+		# self.password = create_password()
+		self.wallet = Wallet.__init__('team_moorhead_' + self.account_id, '1234567890asdfghjkl')
+		self.address = self.wallet.new_address()
 		self.waccounts = []
 		self.daccounts = []
-		self.addresses = []
-		bank.add_person(phone, self)
+		# bank.add_person(phone, self)
+	
+	def add_withdraw(self, account):
+		self.waccounts.append(account)
 
-	def create_id(self):
-		id = ''
-		for i in range(0,8):
-			id = id + str(random.randint(0,9))
-		return id
+	def add_deposit(self, account):
+		self.daccounts,append(account)
 
-	# def create_wallet(self):
-	# 	#FIXME
-	# 	return 0
-
-	def withdraw(self, account_number):
-		#FIXME
-		return 0
-
-	def deposit(self, account_number):
-		#FIXME
-		return 0
-
-	def add_withdrawer(self, account_number, phone):
-		a = account.get_account(account_number)
-		p = self.get_person(phone)
-		a.add_withdrawer(p)
-
-	def get_person(self, phone):
-		return bank.get_person(phone)
-
+	# def add_withdrawer(self, account_number, phone):
+	# 	a = account.get_account(account_number)
+	# 	p = self.get_person(phone)
+	# 	a.add_withdrawer(p)

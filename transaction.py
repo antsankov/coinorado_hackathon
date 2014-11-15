@@ -1,5 +1,5 @@
 from account import account
-from person import person
+from persons import persons
 
 #Send from person to account
 def deposit(account, person, amount):
