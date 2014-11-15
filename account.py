@@ -1,12 +1,10 @@
 import random
-import bitcoinpy.keyUtils
+# import bitcoinpy.keyUtils
 from blockchain.wallet import Wallet
 import blockchain.createwallet
 
 
 class account:
-
-
 
 	def __init__(self):
 		self.account_id = self.create_id()
