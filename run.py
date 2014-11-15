@@ -14,8 +14,7 @@ import transaction
 ACCOUNT_SID = "AC2a9e06ea97e4a1a785361f0e8064e870" 
 AUTH_TOKEN = "bc96d318cbda7ef495f1418baed042f4" 
  
-client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN) 
-
+client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 app = Flask(__name__)
 
 #this function takes in two strings and cats them together with a space. 
