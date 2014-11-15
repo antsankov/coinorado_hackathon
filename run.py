@@ -83,7 +83,7 @@ def returner():
     messages = client.messages.list() 
     for m in messages:
         if (m.direction == 'inbound'):
-            return parser(m.From, m.Body)
+            return parser(m.FromCountry, m.Body)
  
 #this is the main route with the two possible verbs 
 @app.route("/", methods=['GET', 'POST'])
