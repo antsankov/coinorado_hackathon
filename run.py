@@ -22,7 +22,7 @@ def parser(input):
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
 def returner():
     messages = client.messages.list() 
-    for m in messages: 
+    for m in messages:
         if (m.direction == 'inbound'):
             return parser(m.body)
  
@@ -30,7 +30,7 @@ def returner():
 @app.route("/", methods=['GET', 'POST'])
 
 #this is the responder function 
-def hello_monkey():
+def responder():
     resp = twilio.twiml.Response()
     resp.message("R: " + returner())
     return str(resp)
