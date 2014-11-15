@@ -2,9 +2,9 @@ from account import account
 from persons import persons
 
 #Send from person to account
-def deposit(account, person, amount):
+def deposit(account, person, amount,tip):
 	aa = account.address
-	person.wallet.send(aa, amount, person.address)
+	person.wallet.send(aa, amount, person.address,tip,"sent with bxb!")
 
 #Send from account to person
 def withdraw(account, person, amount):
