@@ -6,10 +6,10 @@ import twilio.twiml
 from twilio.rest import TwilioRestClient 
 
 #our own classes 
-# from persons import persons
-# from bank import bank
-# from account import account
-# import transaction
+from persons import persons
+from bank import bank
+from account import account
+import transaction
 from bank import bank
 from parser import parser
 
