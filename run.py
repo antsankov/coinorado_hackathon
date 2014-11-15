@@ -14,7 +14,7 @@ app = Flask(__name__)
 def parser(input):
     mod_input = input.split()
     if (mod_input[0] == "hello" and mod_input[1] == "world"):
-        return "we cool"
+        return "we cool this test works"
 
     else:
         return "we not cool"
