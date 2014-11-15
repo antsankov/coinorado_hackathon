@@ -36,7 +36,7 @@ def parser(origination_number,input,bank):
 
     #looks up the person from the bank based on their origination number
     # user = bank.get_person(origination_number)
-    
+
     #split the input 
     mod_input = input.split()
     
@@ -74,8 +74,9 @@ def parser(origination_number,input,bank):
             return "Invalid/Unknown account"
 
     if (verb == "add"):
-        if(not(mod_input[1] in bank.people.keys())):
+        if (not(mod_input[1] in bank.people.keys())):
             bank.add_person(mod_input[1])
+
         elif(mod_input[1] == None):
             "Must give phone number of new user"
         else:
@@ -88,12 +89,16 @@ def parser(origination_number,input,bank):
         return "Unknown if withdrawl or deposit!"
 
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
-def returner(bank):
+def returner(bank,debug):
     messages = client.messages.list() 
     for m in messages:
-        if (m.direction == 'inbound'):
+        if (m.direction == 'inbound' and debug == False):
             #you need to use m.from_ NOT m.From, this causes 
             return parser(m.from_,m.body,bank)
+
+        if (m.direction == 'inbound' and debug == True):
+            #you need to use m.from_ NOT m.From, this causes 
+            return m.body
  
 #this is the main route with the two possible verbs 
 @app.route("/", methods=['GET', 'POST'])
@@ -102,7 +107,15 @@ def returner(bank):
 def responder():
     test_bank = bank_init()
     resp = twilio.twiml.Response()
-    resp.message(returner(test_bank))
+    resp.message(returner(test_bank),False)
+    return str(resp)
+
+
+@app.route("/debug", methods=['[GET]', 'POST'])
+def debugger():
+    test_bank = bank_init()
+    resp = twilio.twiml.Response()
+    resp.message(returner(test_bank),True)
     return str(resp)
 
 
