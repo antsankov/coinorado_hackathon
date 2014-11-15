@@ -107,16 +107,16 @@ def parser(origination_number,input,bank):
 def returner(bank,debug):
     messages = client.messages.list() 
     return "FUCK"
-    for m in messages:
-        if (m.direction == 'inbound' and debug == False):
-            #print("hello world returner")
-            #you need to use m.from_ NOT m.From, this causes 
-            #return parser(m.from_,m.body,bank)
-            return "shit"
+    # for m in messages:
+    #     if (m.direction == 'inbound' and debug == False):
+    #         #print("hello world returner")
+    #         #you need to use m.from_ NOT m.From, this causes 
+    #         #return parser(m.from_,m.body,bank)
+    #         return "shit"
 
-        if (m.direction == 'inbound' and debug == True):
-            #you need to use m.from_ NOT m.From, this causes keyword error  
-            return m.body
+    #     if (m.direction == 'inbound' and debug == True):
+    #         #you need to use m.from_ NOT m.From, this causes keyword error  
+    #         return m.body
  
  #this is the main route with the two possible verbs, any methods after this runs automatically
 @app.route("/", methods=['GET', 'POST'])
@@ -124,9 +124,9 @@ def returner(bank,debug):
 # #this is the responder function 
 def responder():
     resp = twilio.twiml.Response()
-    #resp.message(returner(test_bank,False))
-    #return str(resp)
-    return "HELLO WORLD 4"
+    resp.message(returner(test_bank,False))
+    return str(resp)
+    #return "HELLO WORLD 4"
 
 @app.route("/debug", methods=['GET', 'POST'])
 
