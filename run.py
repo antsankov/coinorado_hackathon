@@ -110,10 +110,10 @@ def returner(bank,debug):
     messages = client.messages.list() 
     for m in messages:
         if (m.direction == 'inbound' and debug == False):
-            print("hello world returner")
+            #print("hello world returner")
             #you need to use m.from_ NOT m.From, this causes 
-            return parser(m.from_,m.body,bank)
-            #return "shit"
+            #return parser(m.from_,m.body,bank)
+            return "shit"
 
         if (m.direction == 'inbound' and debug == True):
             #you need to use m.from_ NOT m.From, this causes keyword error  
@@ -126,8 +126,8 @@ def returner(bank,debug):
 def responder():
     resp = twilio.twiml.Response()
     resp.message(returner(test_bank,False))
-    #return str(resp)
-    return "HELLO WORLD 4"
+    return str(resp)
+    #return "HELLO WORLD 4"
 
 @app.route("/debug", methods=['GET', 'POST'])
 
