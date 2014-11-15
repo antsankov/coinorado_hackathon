@@ -13,11 +13,15 @@ app = Flask(__name__)
 #this is the same parser, makes ure that we include these helper functions before the app route is defined!
 def parser(input):
     mod_input = input.split()
-    if (mod_input[0] == "hello" and mod_input[1] == "world"):
-        return "we cool this test works"
+    
+    if (mod_input[0] == "w"):
+        return "w"
+    
+    if (mod_input[0] == "d"):
+        return "d"
 
     else:
-        return "we not cool"
+        return "Unknown if withdrawel or deposit!"
 
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
 def returner():
@@ -32,7 +36,7 @@ def returner():
 #this is the responder function 
 def responder():
     resp = twilio.twiml.Response()
-    resp.message("R: " + returner())
+    resp.message( returner())
     return str(resp)
 
 
