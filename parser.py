@@ -1,9 +1,10 @@
 from persons import persons
 from bank import bank
 from account import account
+from blockchain.wallet import Wallet
 import transaction
 import money
-import math
+
 
 def parser(origination_number,input,bank):
     
@@ -25,15 +26,21 @@ def parser(origination_number,input,bank):
     #combine     
     if (verb == "combine"):
         identifier = mod_input[1]
+        outgoing = mod_input[2]
         #password = mod_input[2]
         wallet = Wallet(identifier, 'Boondock2013')
         #failsafe: only import 10 satoshi max
-        previous_balance = math.max(wallet.get_balance(), 10)
-        ra = caller.address
+        previous_balance = wallet.get_balance()
+        previous_balance = min(previous_balance, 10)
+        ra = caller.address.address
         rw = caller.wallet
-        wallet.send(r, s, wallet.get_address)
-        current_balance = rw.get_balance()
-        return "Successfully moved {0} satoshi from {1} to {2}: ".format(r, identifier, ra)
+        print ra
+        print previous_balance
+        #outgoing_addr = wallet.get_address(outgoing)
+        print outgoing
+        wallet.send(ra, previous_balance, outgoing)
+        #current_balance = rw.get_balance()
+        return "Successfully moved {0} satoshi from {1} to {2}: ".format(previous_balance, outgoing, ra )
 
     #INFO
     if (verb == "info"):
@@ -130,4 +137,4 @@ def parser(origination_number,input,bank):
         id = bank.add_account(phone_number)
         return id 
     else:
-        return "Unknown if withdrawl or deposit!"
+        return "Unknown command!"
