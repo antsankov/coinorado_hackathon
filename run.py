@@ -22,39 +22,43 @@ def space(return_string, input):
     return (return_string + " " + input)
 
 def parser(origination_number,input):
-    #we are going to be using the origination number to lookup our account
-    return_string = origination_number + " "
+
+    #looks up the person from the bank based on their origination number
+    user = bank.get_person(origination_number)
+    
+    #split the input 
     mod_input = input.split()
+    
+    verb = mod_input[0]
+    accountID = mod_input[1]
+    amount = mod_input[2]
 
-    #this checks if we have a w or d 
-    if (mod_input[0] == "withdraw"):
-        return_string = space(return_string,mod_input[0])
 
-        if (valid_account(mod_input[1])):
-            return_string = space(return_string,mod_input[1])            
+    #this checks if we are withdrawing
+    if (verb == "withdraw"):
 
-            account = account_lookup(mod_input[1])
+        #check if the user has the account that they want to draw from 
+        if (user.waccounts.contains(accountID)):
+            
+            #get the actual account from the bank 
+            account = bank.get_account(accountID)
 
-            if (hasFunds(account,mod_input[2])):
-                return_string = space(return_string,mod_input[2])
-                return "SUCCESS " + return_string
+            if (account.hasFunds(amount)):
+                account.get_withdrawl(amount)
+                return "SUCCESS " + input
 
         else:
             return "Invalid/Unknown account"
 
 
     #this checks if we have a w or d 
-    if (mod_input[0] == "deposit"):
-        return_string = space(return_string,mod_input[0])
+    if (verb == "deposit"):
 
-        if (valid_account(mod_input[1])):
-            return_string = space(return_string,mod_input[1])            
-
-            account = account_lookup(mod_input[1])
-
-            if (addFunds(account,mod_input[2])):
-                return_string = space(return_string,mod_input[2])
-                return "SUCCESS " + return_string
+        if (user.daccounts.contains(accountID)):
+            
+            account = bank.get_account(accountID)
+            account.do_deposit(amount)
+            return "SUCCESS " + input
 
         else:
             return "Invalid/Unknown account"
@@ -62,27 +66,12 @@ def parser(origination_number,input):
     else:
         return "Unknown if withdrawl or deposit!"
 
-def addFunds(account, number):
-    return True
-
-def accountLookup(number):
-    return number
-
-def hasFunds(account,amount):
-    return True
-
-#talk directly to the bank
-def account_lookup(account):
-    return 555
- 
-def valid_account(account):
-    return True
-
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
 def returner():
     messages = client.messages.list() 
     for m in messages:
         if (m.direction == 'inbound'):
+            #you need to use m.from_ NOT m.From, this causes 
             return parser(m.from_,m.body)
  
 #this is the main route with the two possible verbs 
