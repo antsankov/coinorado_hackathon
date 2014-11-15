@@ -1,7 +1,7 @@
 import random
 import bitcoinpy.keyUtils
 from blockchain.wallet import Wallet
-import blockchain
+import blockchain.createwallet
 
 
 class account:
@@ -10,7 +10,7 @@ class account:
 		self.account_id = create_id()
 		self.withdrawers = []
 		self.depositers = []
-		temp = create_wallet('Boondock2013', 'bitcoin')
+		temp = blockchain.createwallet.create_wallet('Boondock2013', 'bitcoin')
 		self.wallet = Wallet(temp.identifier, 'Boondock2013')
 		self.address = self.wallet.new_address()
 		# bank.add_account(self.account_id, self)

@@ -9,7 +9,7 @@ class persons:
 	def __init__(self, phone):
 		self.phone = phone
 		# self.password = create_password()
-		temp = create_wallet('Boondock2013', 'bitcoin')
+		temp = blockchain.createwallet.create_wallet('Boondock2013', 'bitcoin')
 		self.wallet = Wallet(temp.identifier, 'Boondock2013')
 		self.address = self.wallet.new_address()
 		self.waccounts = []
