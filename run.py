@@ -37,15 +37,18 @@ def parser(origination_number,input,bank):
     #looks up the person from the bank based on their origination number
     # user = bank.get_person(origination_number)
 
+    return ("INPUT IS: " + input)
+    
     #split the input 
     mod_input = input.split()
-    
+
     verb = mod_input[0]
-    accountID = mod_input[1]
-    amount = mod_input[2]
+    
 
     #this checks if we are withdrawing
     if (verb == "withdraw"):
+        accountID = mod_input[1]
+        amount = mod_input[2]
 
         #check if the user has the account that they want to draw from 
         if (accountID in test_person.waccounts ):
@@ -63,8 +66,10 @@ def parser(origination_number,input,bank):
 
     #this checks if we have a w or d 
     if (verb == "deposit"):
+        accountID = mod_input[1]
+        amount = mod_input[2]
 
-        if ( accountID in test_person.daccounts):
+        if (accountID in test_person.daccounts):
             
             account = bank.get_account(accountID)
             deposit(account,test_person,amount)
@@ -74,16 +79,18 @@ def parser(origination_number,input,bank):
             return "Invalid/Unknown account"
 
     if (verb == "add"):
-        if (not(mod_input[1] in bank.people.keys())):
-            bank.add_person(mod_input[1])
+        phone_number = mod_input[1]
+        if (not(phone_number in bank.people.keys())):
+            bank.add_person(phone_number)
 
-        elif(mod_input[1] == None):
+        elif(phone_number == None):
             "Must give phone number of new user"
         else:
             "User has already been created"
 
     if(verb == "create"):
-        bank.add_account()
+        phone_number = mod_input[1]
+        bank.add_account(phone_number)
 
     else:
         return "Unknown if withdrawl or deposit!"
@@ -107,15 +114,15 @@ def returner(bank,debug):
 def responder():
     test_bank = bank_init()
     resp = twilio.twiml.Response()
-    resp.message(returner(test_bank),False)
+    resp.message(returner(test_bank,False))
     return str(resp)
 
 
-@app.route("/debug", methods=['[GET]', 'POST'])
+@app.route("/debug", methods=['GET', 'POST'])
 def debugger():
     test_bank = bank_init()
     resp = twilio.twiml.Response()
-    resp.message(returner(test_bank),True)
+    resp.message(returner(test_bank,True))
     return str(resp)
 
 
