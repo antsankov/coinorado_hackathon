@@ -31,7 +31,7 @@ def bank_init():
 def parser(origination_number,input,bank):
     if(not(origination_number in bank.people.keys())):
         test_person = persons(origination_number)
-        bank.addPerson(origination_number, test_person)
+        bank.add_person(origination_number)
     else:
         test_person = bank.get_person(origination_number)
 
@@ -49,7 +49,7 @@ def parser(origination_number,input,bank):
     if (verb == "withdraw"):
 
         #check if the user has the account that they want to draw from 
-        if (accountID in user.waccounts ):
+        if (accountID in test_person.waccounts ):
             
             #get the actual account from the bank 
             account = bank.get_account(accountID)

@@ -1,4 +1,6 @@
 import transaction
+from persons import persons
+from account import account
 
 class bank:
 
