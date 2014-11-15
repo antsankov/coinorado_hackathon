@@ -1,17 +1,19 @@
 import random
 from bank import bank
 from account import account
-
+import bitcoinpy.keyUtils
 
 class persons:
 
 	def __init__(self, phone, permissions):
 		self.phone = phone
-		self.permissions = permissions
+		#self.permissions = permissions
 		self.id = create_id()
 		self.password = create_password()
 		self.wallet = create_wallet()
-		self.accounts = []
+		self.waccounts = []
+		self.daccounts = []
+		self.addresses = []
 		bank.add_person(phone, self)
 
 	def create_id(self):
@@ -20,9 +22,9 @@ class persons:
 			id = id + str(random.randint(0,9))
 		return id
 
-	def create_wallet(self):
-		#FIXME
-		return 0
+	# def create_wallet(self):
+	# 	#FIXME
+	# 	return 0
 
 	def withdraw(self, account_number):
 		#FIXME
@@ -32,9 +34,7 @@ class persons:
 		#FIXME
 		return 0
 
-	def see_balance(self, account_number):
-		#FIXME
-		return 0
+
 
 	def add_withdrawer(self, account_number, phone):
 		a = account.get_account(account_number)

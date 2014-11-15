@@ -9,7 +9,9 @@ class account:
 		self.account_id = create_id()
 		self.account_wallet = create_wallet()
 		self.balance = 0
-		self.withdrawers = []
+		self.witherdrawers = []
+		self.depositers = []
+		self.addresses = []
 		bank.add_account(self.account_id, self)
 
 	def create_id(self):
