@@ -6,10 +6,6 @@ import twilio.twiml
 from twilio.rest import TwilioRestClient 
 
 #our own classes 
-# from persons import persons
-# from bank import bank
-# from account import account
-# import transaction
 from bank import bank
 from parser import parser
 
@@ -28,8 +24,6 @@ def space(return_string, input):
 
 def bank_init():
     test_bank = bank()
-    # test_person = person('+17208378697')
-    # test_bank.addPerson('+17208378697', test_person)
     return test_bank
 
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
@@ -64,6 +58,4 @@ def debugger():
 
 #this gets the server running.
 if __name__ == "__main__":
-    # print (parser("1111111","withdraw 555 48758475"))
-    # print (parser("2222222","deposit 555 488923478923"))
     app.run(debug=True)
