@@ -22,6 +22,7 @@ def space(return_string, input):
     return (return_string + " " + input)
 
 def parser(origination_number,input):
+    #we are going to be using the origination number to lookup our account
     return_string = origination_number + " "
     mod_input = input.split()
 
@@ -82,7 +83,7 @@ def returner():
     messages = client.messages.list() 
     for m in messages:
         if (m.direction == 'inbound'):
-            return parser(m.From, m.body)
+            return parser(m.From, m.Body)
  
 #this is the main route with the two possible verbs 
 @app.route("/", methods=['GET', 'POST'])
