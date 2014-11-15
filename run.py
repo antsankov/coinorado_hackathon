@@ -24,21 +24,23 @@ def parser(input):
 
         if (valid_account(mod_input[1])):
             return_string = space(return_string,mod_input[1])            
-            print(return_string)
+            return return_string
 
         else:
             return "Invalid/Unknown account"
 
 
+    #this checks if we have a w or d 
     if (mod_input[0] == "d"):
         return_string = space(return_string,mod_input[0])
 
         if (valid_account(mod_input[1])):
             return_string = space(return_string,mod_input[1])            
-            print(return_string)
+            return return_string
 
         else:
             return "Invalid/Unknown account"
+
 
     else:
         return "Unknown if withdrawel or deposit!"
@@ -66,7 +68,7 @@ def responder():
 
 #this gets the server running.
 if __name__ == "__main__":
-    print parser("w 555")
+    print (parser("w 555"))
     app.run(debug=True)
 
 
