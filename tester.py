@@ -14,6 +14,10 @@ def tester():
     
     #adds a user 
     print(parser("+17208378697","add +17208378675",test_bank))
+    #gives their info
+    print(parser("+17208378697","info",test_bank))
+    #gives the balance
+    print(parser("+17208378697","balance",test_bank))
     #add a dupilicate tester 
     print(parser("+17208378697","add +17208378675",test_bank))
     #creates an accoutn and prints an account number 
@@ -21,8 +25,9 @@ def tester():
     #creates an accoutn and prints an account number 
     print(parser("+17208378697","create +17208378675",test_bank))
     print(parser("+17208378697","add +57208378675",test_bank))
-    print("Bank customers: " + str(test_bank.people))
-    print("Bank accounts" + str(test_bank.accounts))
+    print(parser("+17208378697","info +17208378675",test_bank))
+    #print("Bank customers: " + str(test_bank.people))
+    #print("Bank accounts" + str(test_bank.accounts))
 
 
 if __name__ == "__main__":
