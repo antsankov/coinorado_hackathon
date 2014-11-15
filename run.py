@@ -44,6 +44,12 @@ def returner(bank,debug):
 #this is the main route with the two possible verbs, any methods after this runs automatically
 @app.route("/", methods=['GET', 'POST'])
 
+def tester():
+    #our m.from: +17208378697 m.body: what we want, bank
+    print(parser("+17208378697","add +17208378675",test_bank))
+    print(parser("+17208378697","add +17208378675",test_bank))
+
+
 #this is the responder function 
 def responder():
     resp = twilio.twiml.Response()
@@ -62,7 +68,7 @@ def debugger():
 #this gets the server running.
 if __name__ == "__main__":
     test_bank = bank_init()
+    tester()
     # print (parser("1111111","withdraw 555 48758475"))
     # print (parser("2222222","deposit 555 488923478923"))
     app.run(debug=True)
-
