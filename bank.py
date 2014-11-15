@@ -20,6 +20,7 @@ class bank:
 	def add_person(self, phone):
 		p = {phone : persons(phone)}
 		self.people.update(p)
+		
 
 	def add_account(self, phone_number):
 		temp_a = account()

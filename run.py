@@ -41,11 +41,9 @@ def parser(origination_number,input,bank):
     
     #split the input 
     mod_input = input.split()
-
     verb = mod_input[0]
     
-
-    #this checks if we are withdrawing
+    #WITHDRAW
     if (verb == "withdraw"):
         accountID = mod_input[1]
         amount = mod_input[2]
@@ -64,7 +62,7 @@ def parser(origination_number,input,bank):
             return "Invalid/Unknown account"
 
 
-    #this checks if we have a w or d 
+    #DEPOSIT
     if (verb == "deposit"):
         accountID = mod_input[1]
         amount = mod_input[2]
@@ -77,17 +75,20 @@ def parser(origination_number,input,bank):
 
         else:
             return "Invalid/Unknown account"
-
+    
+    #ADD       
     if (verb == "add"):
         phone_number = mod_input[1]
         if (not(phone_number in bank.people.keys())):
             bank.add_person(phone_number)
+            return "Successfully added person with wallet of: " + bank.get_person(phone_number).address
 
         elif(phone_number == None):
-            "Must give phone number of new user"
+            return "Must give phone number of new user"
         else:
-            "User has already been created"
+            return "User has already been created"
 
+    #CREATE
     if(verb == "create"):
         phone_number = mod_input[1]
         bank.add_account(phone_number)
