@@ -21,9 +21,10 @@ def parser(input):
 
         if (valid_account(mod_input[1])):
             return_string + mod_input[1]
+            return return_string
 
         else:
-            return "Invalid account"
+            return "Invalid/Unknown account"
 
 
     if (mod_input[0] == "d"):
@@ -31,11 +32,10 @@ def parser(input):
         
         if (valid_account(mod_input[1])):
             return_string + mod_input[1]
+            return return_string
             
         else:
-            return "Invalid account"
-
-
+            return "Invalid/Unknown account"
 
     else:
         return "Unknown if withdrawel or deposit!"
