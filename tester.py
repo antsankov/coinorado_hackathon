@@ -5,12 +5,28 @@ from parser import parser
 def tester():
     test_bank = bank()
 
-    #adds a user 
-    print(parser("+17208378697","create",test_bank))
-    #gives their info
-    #print(parser("+17208378697","info",test_bank))
+    #adds a user
+    #alex
+    print(parser("+17208378697","create 2666f08a-bfbb-42fb-80f8-e1ef974d5343 1Edw3z8dkgjqch5UFvkgBuUeaP2mAU2LvT 1234567890", test_bank))
+    #sam
+    print(parser("+17209991335","create 4620ffe2-86d6-4b63-ac16-4b8decfaa6f5 1KoQFBAEASCykCmnvK4kz7FRV4a1bqQu1Q Boondock2013", test_bank))
+    #cris
+    print(parser("+15122842178","create c972c797-2595-4fb6-91e4-0547ef268c80 1G4kUxVk8wEfKCwNehmP9Fot4pAnAJMAaY C1rissalazar", test_bank))
+
+    #gives their info alex
+    print(parser("+17208378697","info",test_bank))
     #gives the balance
-    #print(parser("+17208378697","balance",test_bank))
+    print(parser("+17208378697","balance",test_bank))
+
+        #gives their info sam
+    print(parser("+17209991335","info",test_bank))
+    #gives the balance
+    print(parser("+17209991335","balance",test_bank))
+
+        #gives their info cris
+    print(parser("+15122842178","info",test_bank))
+    #gives the balance
+    print(parser("+15122842178","balance",test_bank))
 
     #account_to_person(account,desitnation_phone,permission,actual_amount)
     #print (parser("+17208378697","a"))

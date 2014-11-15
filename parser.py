@@ -1,28 +1,33 @@
-from persons import persons
-from bank import bank
-from account import account
 from blockchain.wallet import Wallet
 import transaction
 import money
-import account
-
+from account import account
 
 def parser(origination_number,input,bank):
     
-    if(not(origination_number in bank.people.keys())):
-        caller = account(origination_number)
-        bank.add_account(caller)
+    # if(not(origination_number in bank.accounts.keys())):
+        #
+    # bank.add_account(origination_number)
 
-    else:
-        for i in range (0,bank.accounts.length()):
-            print i
     
     #split the input 
     mod_input = input.split()
     verb = mod_input[0]
     
+    #CREATE
+    if(verb == "create"):
+        # phone_number = origination_number
+        identifier = mod_input[1]
+        address = mod_input[2]
+        pw = mod_input[3]
+        #act = account(origination_number, identifier, address, pw,bank)
+        bank.add_account(origination_number, identifier, address, pw)
+        act = bank.get_account(origination_number)
+        return "account created for {0}".format(act.account_id)
+
+    caller = bank.get_account(origination_number)
     #Amount account
-    if (verb == "amount"):
+    if (verb == "balance"):
         #account = mod_input[1]
         return "balance {0}".format(caller.wallet.get_balance())
    
@@ -48,7 +53,7 @@ def parser(origination_number,input,bank):
     #INFO
     if (verb == "info"):
         #account = mod_input[1]
-        return "Blockchain Wallet: {0}\n Address: {1}".format(caller.wallet.identifier, caller.address.address)
+        return "Blockchain Wallet: {0}\n Address: {1}".format(caller.wallet.identifier, caller.address)
 
     #WITHDRAW
     if (verb == "withdraw"):
@@ -87,8 +92,8 @@ def parser(origination_number,input,bank):
 
         if (accountID in caller.daccounts):
             
-            account = bank.get_account(accountID)
-            deposit(account,caller,amount)
+            act = bank.get_account(accountID)
+            deposit(act,caller,amount)
             return "SUCCESS " + input
 
         else:
@@ -101,7 +106,7 @@ def parser(origination_number,input,bank):
         #def account_to_person(self, account, person, permission, person_to_percent = 1.0):
 
         #this is the account you are sending the coins from
-        account = origination_number
+        act = origination_number
 
         #this is the phone number you are sending the coins to. 
         desitnation_phone = mod_input[1]
@@ -118,12 +123,12 @@ def parser(origination_number,input,bank):
         percent = mod_input[4]
 
         #this checks if the persons phone number is in the bank keys 
-        if (not(desitnation_phone in bank.people.keys())):
+        if (not(desitnation_phone in bank.accounts.keys())):
             return "Person doesn't exist"
 
         actual_amount = (amount * percent)
 
-        if (not(hasFunds(account,amount))):
+        if (not(hasFunds(act,amount))):
             return "Not enough coins to make transfer"
 
         #transfers from an account to a person: 
@@ -133,11 +138,6 @@ def parser(origination_number,input,bank):
             # 4. the amount we are actually transferring
             # 5. the percent to transfer
 
-        account_to_person(account,desitnation_phone,permission,actual_amount)
+        #account_to_person(account,desitnation_phone,permission,actual_amount)
 
 
-    #CREATE
-    if(verb == "create"):
-        phone_number = mod_input[1]
-        account = account(phone_number)
-        return ("account created " + account.accountID) 

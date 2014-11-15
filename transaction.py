@@ -18,3 +18,11 @@ def has_funds( amount, account):
 	else:
 		return False
 
+# def pay_debts(withdrawers):
+# 	for withdrawer in withdrawers:
+# 		withdraw(self.account, withdrawer[0], withdrawer[1])
+
+# def collect_debts(depositers):
+# 	for depositer in depositers:
+# 		deposit(self.wallet, depositer[0], depositer[1])
+
