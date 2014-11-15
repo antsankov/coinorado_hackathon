@@ -30,9 +30,12 @@ class account:
 		#FIXME
 		return 0
 
+	def has_funds(self, amount):
+		if(amount <= self.balance):
+			return True
+		else:
+			False
+
 	def add_withdrawer(self, person):
 		self.withdrawers.append(person)
-
-	def get_account(self, account_id):
-		return banks.get_account(account_id)
 
