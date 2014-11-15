@@ -108,16 +108,17 @@ def parser(origination_number,input,bank):
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
 def returner(bank,debug):
     messages = client.messages.list() 
-    for m in messages:
-        if (m.direction == 'inbound' and debug == False):
-            #print("hello world returner")
-            #you need to use m.from_ NOT m.From, this causes 
-            #return parser(m.from_,m.body,bank)
-            return "shit"
+    # for m in messages:
+    #     if (m.direction == 'inbound' and debug == False):
+    #         #print("hello world returner")
+    #         #you need to use m.from_ NOT m.From, this causes 
+    #         #return parser(m.from_,m.body,bank)
+    #         return "shit"
 
-        if (m.direction == 'inbound' and debug == True):
-            #you need to use m.from_ NOT m.From, this causes keyword error  
-            return m.body
+    #     if (m.direction == 'inbound' and debug == True):
+    #         #you need to use m.from_ NOT m.From, this causes keyword error  
+    #         return m.body
+    return "FUCK"
  
  #this is the main route with the two possible verbs, any methods after this runs automatically
 @app.route("/", methods=['GET', 'POST'])
