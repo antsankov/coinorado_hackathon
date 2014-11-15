@@ -39,7 +39,9 @@ def returner(bank,debug):
             return m.body
  
 #this is the main route with the two possible verbs, any methods after this runs automatically
-@app.route("/1", methods=['GET', 'POST'])
+
+
+@app.route("/", methods=['GET', 'POST'])
 #this is the responder function 
 def responder():
     resp = twilio.twiml.Response()

@@ -4,16 +4,10 @@ import money
 from account import account
 
 def parser(origination_number,input,bank):
-    
-    # if(not(origination_number in bank.accounts.keys())):
-        #
-    # bank.add_account(origination_number)
 
-    
     #split the input 
     mod_input = input.split()
     verb = mod_input[0]
-    
     
     if (verb == "my_number"):
         return origination_number
