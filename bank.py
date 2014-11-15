@@ -1,5 +1,3 @@
-import account
-import persons
 
 class bank:
 

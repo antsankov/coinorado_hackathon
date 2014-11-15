@@ -1,6 +1,6 @@
 import random
-import bank
-import persons
+from bank import bank
+
 
 class account:
 
@@ -34,5 +34,5 @@ class account:
 		self.withdrawers.append(person)
 
 	def get_account(self, account_id):
-		return banks.get_account
+		return banks.get_account(account_id)
 

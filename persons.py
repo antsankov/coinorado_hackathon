@@ -1,7 +1,6 @@
 import random
-import bank
-import accounts
-
+from bank import bank
+from account import account
 
 
 class persons:
