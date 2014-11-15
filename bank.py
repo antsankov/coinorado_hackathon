@@ -1,9 +1,15 @@
+import transaction
 
 class bank:
 
 	def __init__(self):
 		self.people = {}
 		self.accounts = {}
+		self.atop = {}
+
+	#person to percent is dict between person object and and that it can withdraw
+	def acount_to_person(self, account, person_to_percent):
+		self.atop.update({acount : person_to_percent})
 
 	def add_person(self, phone, person):
 		p = {phone : person}
@@ -18,4 +24,6 @@ class bank:
 
 	def get_person(self, phone):
 		return self.people[phone]
+
+
 

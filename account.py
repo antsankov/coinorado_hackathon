@@ -1,17 +1,17 @@
 import random
 from bank import bank
-
+import bitcoinpy.keyUtils
+from blockchain.wallet import Wallet
+import transaction
 
 class account:
 
-	def __init__(self, creator_id):
-		self.creator_id = creator_id
+	def __init__(self):
 		self.account_id = create_id()
-		self.account_wallet = create_wallet()
-		self.balance = 0
-		self.witherdrawers = []
+		self.withdrawers = []
 		self.depositers = []
-		self.addresses = []
+		self.wallet = Wallet.__init__('team_moorhead_' + self.account_id, '1234567890asdfghjkl')
+		self.address = self.wallet.new_address()
 		bank.add_account(self.account_id, self)
 
 	def create_id(self):
@@ -20,24 +20,8 @@ class account:
 			id = id + str(random.randint(0,9))
 		return id
 
-	def create_wallet(self):
-		#FIXEME
-		return 0
-
-	def get_withdrawal(self, amount):
-		#FIXEME
-		return 0
-
-	def do_deposit(self, amount):
-		#FIXME
-		return 0
-
-	def has_funds(self, amount):
-		if(amount <= self.balance):
-			return True
-		else:
-			False
-
 	def add_withdrawer(self, person):
 		self.withdrawers.append(person)
 
+	def add_depositers(self, person):
+		self.depositers.append(person)

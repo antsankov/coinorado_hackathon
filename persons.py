@@ -34,8 +34,6 @@ class persons:
 		#FIXME
 		return 0
 
-
-
 	def add_withdrawer(self, account_number, phone):
 		a = account.get_account(account_number)
 		p = self.get_person(phone)
