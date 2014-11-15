@@ -127,7 +127,7 @@ app = Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 
 # #this is the responder function 
-# def responder():
+def responder():
 #     resp = twilio.twiml.Response()
 #     resp.message(returner(test_bank,False))
 #     return str(resp)
