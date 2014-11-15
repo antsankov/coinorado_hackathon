@@ -21,8 +21,14 @@ app = Flask(__name__)
 def space(return_string, input):
     return (return_string + " " + input)
 
+def bank_init():
+    test_bank = bank()
+    test_bank.addPerson('+17208378697')
+    return test_bank
+
 def parser(origination_number,input):
 
+    person = persons(origination_number)
     #looks up the person from the bank based on their origination number
     user = bank.get_person(origination_number)
     
@@ -32,7 +38,6 @@ def parser(origination_number,input):
     verb = mod_input[0]
     accountID = mod_input[1]
     amount = mod_input[2]
-
 
     #this checks if we are withdrawing
     if (verb == "withdraw"):
@@ -79,6 +84,7 @@ def returner():
 
 #this is the responder function 
 def responder():
+    test_bank = bank_init()
     resp = twilio.twiml.Response()
     resp.message(returner())
     return str(resp)
@@ -89,6 +95,4 @@ if __name__ == "__main__":
     print (parser("1111111","withdraw 555 48758475"))
     print (parser("2222222","deposit 555 488923478923"))
     app.run(debug=True)
-
-
 
