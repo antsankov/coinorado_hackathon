@@ -24,10 +24,10 @@ def space(return_string, input):
     return (return_string + " " + input)
 
 def bank_init():
-    test_bank = bank()
+    the_bank = bank()
     # test_person = person('+17208378697')
-    # test_bank.addPerson('+17208378697', test_person)
-    return test_bank
+    # the_bank.addPerson('+17208378697', test_person)
+    return the_bank
 
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
 def returner(bank,debug):
@@ -43,20 +43,9 @@ def returner(bank,debug):
  
 #this is the main route with the two possible verbs, any methods after this runs automatically
 @app.route("/", methods=['GET', 'POST'])
-
-def tester():
-    #our m.from: +17208378697 m.body: what we want, bank
-    
-    #adds a user
-    print(parser("+17208378697","add +17208378675",test_bank))
-    print(parser("+17208378697","add +17208378675",test_bank))
-    print(parser("+17208378697","create +17208378675",test_bank))
-
-
-#this is the responder function 
 def responder():
     resp = twilio.twiml.Response()
-    resp.message(returner(test_bank,False))
+    resp.message(returner(the_bank,False))
     return str(resp)
 
 
@@ -64,14 +53,13 @@ def responder():
 
 def debugger():
     resp = twilio.twiml.Response()
-    resp.message(returner(test_bank,True))
+    resp.message(returner(the_bank,True))
     return str(resp)
 
 
 #this gets the server running.
 if __name__ == "__main__":
-    test_bank = bank_init()
-    tester()
+    the_bank = bank_init()
     # print (parser("1111111","withdraw 555 48758475"))
     # print (parser("2222222","deposit 555 488923478923"))
     app.run(debug=True)
