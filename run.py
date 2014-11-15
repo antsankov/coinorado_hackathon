@@ -21,7 +21,7 @@ def parser(input):
     #this checks if we have a w or d 
     if (mod_input[0] == "w"):
         return_string = space(return_string,mod_input[0])
-        return return_string
+
         if (valid_account(mod_input[1])):
             return_string = space(return_string,mod_input[1])            
             print(return_string)
