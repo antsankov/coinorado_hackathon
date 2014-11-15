@@ -2,6 +2,7 @@ from persons import persons
 from bank import bank
 from account import account
 import transaction
+import money
 
 def parser(origination_number,input,bank):
     if(not(origination_number in bank.people.keys())):
@@ -22,6 +23,12 @@ def parser(origination_number,input,bank):
         accountID = mod_input[1]
         amount = mod_input[2]
 
+        #check if amount is valid
+        amount = get_satoshis(amount)
+        if(amount < 0):
+            return "Invalid quantity specified: amount must be a valid currency valued at greater than 1 satoshi"
+
+
         #check if the user has the account that they want to draw from 
         if (accountID in test_person.waccounts ):
             
@@ -40,6 +47,11 @@ def parser(origination_number,input,bank):
     if (verb == "deposit"):
         accountID = mod_input[1]
         amount = mod_input[2]
+
+        #check if amount is valid
+        amount = get_satoshis(amount)
+        if(amount < 0):
+            return "Invalid quantity specified: amount must be a valid currency valued at greater than 1 satoshi"
 
         if (accountID in test_person.daccounts):
             
