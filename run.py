@@ -107,7 +107,7 @@ def parser(origination_number,input,bank):
 
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
 def returner(bank,debug):
-    messages = client.messages.list() 
+    #messages = client.messages.list() 
     # for m in messages:
     #     if (m.direction == 'inbound' and debug == False):
     #         #print("hello world returner")
