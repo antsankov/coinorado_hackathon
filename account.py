@@ -10,9 +10,9 @@ class account:
 		self.account_id = create_id()
 		self.withdrawers = []
 		self.depositers = []
-		temp = blockchain.createwallet.create_wallet('Boondock2013', 'bitcoin')
+		temp = blockchain.createwallet.create_wallet('Boondock2013', 'c62026c6-89e3-4200-93a9-f51250ad1ea5')
 		self.wallet = Wallet(temp.identifier, 'Boondock2013')
-		self.address = self.wallet.new_address()
+		self.address = self.wallet.new_address(('team_moorhead_'+self.account_id))
 		# bank.add_account(self.account_id, self)
 
 	def create_id(self):

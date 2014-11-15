@@ -75,7 +75,15 @@ def parser(origination_number,input,bank):
             return "Invalid/Unknown account"
 
     if (verb == "add"):
-        return "added a motherfucker"
+        if(not(mod_input[1] in bank.people.keys())):
+            bank.add_person(mod_input[1])
+        elif(mod_input[1] == None):
+            "Must give phone number of new user"
+        else:
+            "User has already been created"
+
+    if(verb == "create"):
+        bank.add_account()
 
     else:
         return "Unknown if withdrawl or deposit!"
