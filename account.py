@@ -1,5 +1,4 @@
 import random
-# import bitcoinpy.keyUtils
 from blockchain.wallet import Wallet
 import blockchain.createwallet
 
@@ -20,9 +19,22 @@ class account:
 		for i in range(0,15):
 			id = id + str(random.randint(0,9))
 		return id
-	
-	def add_withdrawer(self, person):
-		self.withdrawers.append(person)
 
-	def add_depositer(self, person):
-		self.depositers.append(person)
+	def pay_debts(self):
+		for withdrawer in self.withdrawers:
+			withdraw(self.account, withdrawer[0], withdrawer[1])
+
+	def collect_debts(self):
+		for depositer in self.depositers:
+			deposit(self.wallet, depositer[0], depositer[1])
+	
+	#we make the withdrawer from a list of the person the money is owed to, and the mount actually owed  
+	def add_withdrawer(self, person,amount):
+		if (has_funds(self.account,amount)):
+			self.withdrawers.append([person,amount])
+		else:
+			return "Not enough money to make deal"
+
+	#we make this list by getting the person and the money they owe us
+	def add_depositer(self, person,amount):
+		self.depositers.append([person,amount])

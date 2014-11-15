@@ -84,19 +84,45 @@ def parser(origination_number,input,bank):
         else:
             return "Invalid/Unknown account"
     
-    #ADD       
-    if (verb == "add"):
-        phone_number = mod_input[1]
-        #permission = mod_input[2]
-        #percent = mod_input[3]
 
-        if (not(phone_number in bank.people.keys())):
-            bank.add_person(phone_number)
-            #bank.account_to_person()
-            return ("Successfully added person with wallet of: " + str(bank.get_person(phone_number).address))
-        
-        else:
-            return "User has already been created"
+
+    #ADD, this adds money to an account, gives a person the ability to access the account, what percent of the money they have access to     
+    if (verb == "add"):
+        #def account_to_person(self, account, person, permission, person_to_percent = 1.0):
+
+        #this is the account you are sending the coins from
+        account = mod_input[1]
+
+        #this is the phone number you are sending the coins to. 
+        desitnation_phone = mod_input[2]
+
+        #this is the permission that you want to give the person 
+        permission = mod_input[3]
+
+        #this is the amount of coins you are sending 
+        amount = mod_input[4]
+
+        #this is the percent they can withdraw ONLY if they are actually withdrawers 
+        percent = mod_input[5]
+
+        #this checks if the persons phone number is in the bank keys 
+        if (not(desitnation_phone in bank.people.keys())):
+            return "Person doesn't exist"
+
+        actual_amount = (amount * percent)
+
+        if (not(hasFunds(account,amount))):
+            return "Not enough coins to make transfer"
+
+        #transfers from an account to a person: 
+            # 1. take the account we are transferring from!
+            # 2. the desitnation_phone we are sending it to. 
+            # 3. permission whether they can take or depsoit
+            # 4. the amount we are actually transferring
+            # 5. the percent to transfer
+
+        account_to_person(account,desitnation_phone,permission,actual_amount)
+
 
     #CREATE
     if(verb == "create"):

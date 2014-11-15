@@ -7,13 +7,12 @@ class bank:
 	def __init__(self):
 		self.people = {}
 		self.accounts = {}
-		self.atop = {}
 
 	#person to percent is dict between person object and and that it can withdraw
-	def account_to_person(self, account, person, permission, person_to_percent = 1.0):
-		self.atop.update({account : person_to_percent})
+	def account_to_person(self, account, person, permission,amount):
+		relation = [person,amount]
 		if permission == 'w':
-			account.add_withdrawer(person)
+			account.add_withdrawer(relation)
 		elif permission == 'd':
 			account.add_depositer(person)
 
