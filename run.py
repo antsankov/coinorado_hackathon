@@ -1,17 +1,17 @@
 # #the default flask for running the server
 from flask import Flask, request, redirect
 
-# #this is the twiml stuff
-# import twilio.twiml
-# from twilio.rest import TwilioRestClient 
+#this is the twiml stuff
+import twilio.twiml
+from twilio.rest import TwilioRestClient 
 
-# #our own classes 
-# from persons import persons
-# from bank import bank
-# from account import account
-# import transaction
-# from bank import bank
-# from parser import parser
+#our own classes 
+from persons import persons
+from bank import bank
+from account import account
+import transaction
+from bank import bank
+from parser import parser
 
 # ACCOUNT_SID = "AC2a9e06ea97e4a1a785361f0e8064e870" 
 # AUTH_TOKEN = "bc96d318cbda7ef495f1418baed042f4" 
