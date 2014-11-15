@@ -6,7 +6,7 @@ class bank:
 
 	def __init__(self):
 		self.people = {}
-		self.accounts = {}
+		self.accounts = []
 
 	#person to percent is dict between person object and and that it can withdraw
 	def account_to_person(self, account, person, permission,amount):
@@ -20,13 +20,8 @@ class bank:
 		p = {phone : persons(phone)}
 		self.people.update(p)
 
-	def add_account(self, phone_number):
-		temp_a = account()
-		self.atop.update({temp_a : self.get_person(phone_number)})
-		a = {temp_a.account_id : temp_a}
-		self.accounts.update(a)
-		return temp_a.account_id
-
+	def add_account(self, account):
+		self.accounts.append(account)
 		
 	def get_account(self, account_id):
 		return self.accounts[account_id]

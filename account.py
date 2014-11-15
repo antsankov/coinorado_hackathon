@@ -5,14 +5,12 @@ import blockchain.createwallet
 
 class account:
 
-	def __init__(self):
-		self.account_id = self.create_id()
-		self.withdrawers = []
-		self.depositers = []
+	def __init__(self,phone_number):
+		self.account_id = phone_number
 		temp = blockchain.createwallet.create_wallet('Boondock2013', 'c62026c6-89e3-4200-93a9-f51250ad1ea5')
 		self.wallet = Wallet(temp.identifier, 'Boondock2013')
 		self.address = self.wallet.new_address(('team_moorhead_'+self.account_id))
-		# bank.add_account(self.account_id, self)
+		bank.add_account(self.account_id, self)
 
 	def create_id(self):
 		id = ''

@@ -12,15 +12,16 @@ class persons:
 		temp = blockchain.createwallet.create_wallet('Boondock2013', 'c62026c6-89e3-4200-93a9-f51250ad1ea5')
 		self.wallet = Wallet(temp.identifier, 'Boondock2013')
 		self.address = self.wallet.new_address(('team_moorhead_' + phone))
-		self.waccounts = []
-		self.daccounts = []
-		# bank.add_person(phone, self)
+
 	
 	def add_withdraw(self, account):
 		self.waccounts.append(account)
 
 	def add_deposit(self, account):
-		self.daccounts,append(account)
+		self.daccounts.append(account)
+
+	def add_account(self,acount):
+		self.accounts.append(account)
 
 	# def add_withdrawer(self, account_number, phone):
 	# 	a = account.get_account(account_number)

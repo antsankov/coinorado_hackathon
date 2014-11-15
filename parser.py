@@ -4,15 +4,18 @@ from account import account
 from blockchain.wallet import Wallet
 import transaction
 import money
+import account
 
 
 def parser(origination_number,input,bank):
     
     if(not(origination_number in bank.people.keys())):
-        caller = persons(origination_number)
-        bank.add_person(origination_number)
+        caller = account(origination_number)
+        bank.add_account(caller)
+
     else:
-        caller = bank.get_person(origination_number)
+        for i in range (0,bank.accounts.length()):
+            print i
     
     #split the input 
     mod_input = input.split()
@@ -98,19 +101,21 @@ def parser(origination_number,input,bank):
         #def account_to_person(self, account, person, permission, person_to_percent = 1.0):
 
         #this is the account you are sending the coins from
-        account = mod_input[1]
+        account = origination_number
 
         #this is the phone number you are sending the coins to. 
-        desitnation_phone = mod_input[2]
+        desitnation_phone = mod_input[1]
 
         #this is the permission that you want to give the person 
-        permission = mod_input[3]
+        permission = mod_input[2]
 
         #this is the amount of coins you are sending 
-        amount = mod_input[4]
+        amount = get_satoshis(mod_input[3])
+        if(amount < 0):
+            return "Invalid quantity specified: amount must be a valid currency valued at greater than 1 satoshi"
 
         #this is the percent they can withdraw ONLY if they are actually withdrawers 
-        percent = mod_input[5]
+        percent = mod_input[4]
 
         #this checks if the persons phone number is in the bank keys 
         if (not(desitnation_phone in bank.people.keys())):
@@ -134,7 +139,5 @@ def parser(origination_number,input,bank):
     #CREATE
     if(verb == "create"):
         phone_number = mod_input[1]
-        id = bank.add_account(phone_number)
-        return id 
-    else:
-        return "Unknown command!"
+        account = account(phone_number)
+        return ("account created " + account.accountID) 
