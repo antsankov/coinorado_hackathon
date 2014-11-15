@@ -12,16 +12,36 @@ app = Flask(__name__)
 
 #this is the same parser, makes ure that we include these helper functions before the app route is defined!
 def parser(input):
+    return_string = ""
     mod_input = input.split()
-    
+
+    #this checks if we have a w or d 
     if (mod_input[0] == "w"):
-        return "w"
-    
+        return_string + mod_input[0]
+
+        if (valid_account(mod_input[1])):
+            return_string + mod_input[1]
+
+        else:
+            return "Invalid account"
+
+
     if (mod_input[0] == "d"):
-        return "d"
+        return_string + mod_input[0]
+        
+        if (valid_account(mod_input[1])):
+            return_string + mod_input[1]
+            
+        else:
+            return "Invalid account"
+
+
 
     else:
         return "Unknown if withdrawel or deposit!"
+
+def valid_account(account):
+    return True
 
 #this actually crafts the message for the person. Currently it grabs all messages and only selects the first inbound one, we should find a way to reduce this
 def returner():
