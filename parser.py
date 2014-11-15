@@ -51,7 +51,7 @@ def parser(origination_number,input,bank):
         return "Successfully moved {0} satoshi from {1} to {2}: ".format(previous_balance, outgoing, ra )
 
     #INFO
-    if (verb == "info"):
+    if (verb == "account_info"):
         #account = mod_input[1]
         return "Blockchain Wallet: {0}\n Address: {1}".format(caller.wallet.identifier, caller.address)
 

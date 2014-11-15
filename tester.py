@@ -13,18 +13,18 @@ def tester():
     #cris
     print(parser("+15122842178","create c972c797-2595-4fb6-91e4-0547ef268c80 1G4kUxVk8wEfKCwNehmP9Fot4pAnAJMAaY C1rissalazar", test_bank))
 
-    #gives their info alex
-    print(parser("+17208378697","info",test_bank))
+    #gives their acount_info alex
+    print(parser("+17208378697","acount_info",test_bank))
     #gives the balance
     print(parser("+17208378697","balance",test_bank))
 
-        #gives their info sam
-    print(parser("+17209991335","info",test_bank))
+        #gives their acount_info sam
+    print(parser("+17209991335","acount_info",test_bank))
     #gives the balance
     print(parser("+17209991335","balance",test_bank))
 
-        #gives their info cris
-    print(parser("+15122842178","info",test_bank))
+        #gives their acount_info cris
+    print(parser("+15122842178","acount_info",test_bank))
     #gives the balance
     print(parser("+15122842178","balance",test_bank))
 
@@ -41,7 +41,7 @@ def tester():
     # #creates an accoutn and prints an account number 
     # print(parser("+17208378697","create +17208378675",test_bank))
     # # print(parser("+17208378697","add +57208378675",test_bank))
-    # # print(parser("+17208378697","info +17208378675",test_bank))
+    # # print(parser("+17208378697","acount_info +17208378675",test_bank))
     # #print("Bank customers: " + str(test_bank.people))
     # #print("Bank accounts" + str(test_bank.accounts))
 
