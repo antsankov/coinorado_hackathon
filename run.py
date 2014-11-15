@@ -19,32 +19,52 @@ def parser(input):
     mod_input = input.split()
 
     #this checks if we have a w or d 
-    if (mod_input[0] == "w"):
+    if (mod_input[0] == "withdraw"):
         return_string = space(return_string,mod_input[0])
 
         if (valid_account(mod_input[1])):
             return_string = space(return_string,mod_input[1])            
-            return return_string
+
+            account = account_lookup(mod_input[1])
+
+            if (hasFunds(account,mod_input[2])):
+                return_string = space(return_string,mod_input[2])
+                return "SUCCESS " + return_string
 
         else:
             return "Invalid/Unknown account"
 
 
     #this checks if we have a w or d 
-    if (mod_input[0] == "d"):
+    if (mod_input[0] == "deposit"):
         return_string = space(return_string,mod_input[0])
 
         if (valid_account(mod_input[1])):
             return_string = space(return_string,mod_input[1])            
-            return return_string
+
+            account = account_lookup(mod_input[1])
+
+            if (addFunds(account,mod_input[2])):
+                return_string = space(return_string,mod_input[2])
+                return "SUCCESS " + return_string
 
         else:
             return "Invalid/Unknown account"
 
-
     else:
-        return "Unknown if withdrawel or deposit!"
+        return "Unknown if withdrawl or deposit!"
 
+def addFunds(account, number):
+    return True
+
+def accountLookup(number):
+    return number
+
+def hasFunds(account,amount):
+    return True
+
+def account_lookup(account):
+    return 555
  
 def valid_account(account):
     return True
@@ -68,7 +88,8 @@ def responder():
 
 #this gets the server running.
 if __name__ == "__main__":
-    print (parser("w 555"))
+    print (parser("withdraw 555 48758475"))
+    print (parser("deposit 555 488923478923"))
     app.run(debug=True)
 
 
