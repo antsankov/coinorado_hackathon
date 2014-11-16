@@ -99,6 +99,7 @@ def parser(origination_number,input,bank):
         else:
             return "Invalid/Unknown account"
 
+    #bxb
     if (verb == "bxb"):
         pn = mod_input[1]
         amount = mod_input[2]
@@ -111,8 +112,8 @@ def parser(origination_number,input,bank):
         # if (accountID in caller.daccounts):
             
         else: 
-            act = bank.get_account(accountID)
-            deposit(act,caller,amount,15000)
+            act = bank.get_account(pn)
+            transaction.deposit(act,caller,amount,15000)
             return ("SUCCESS " + input)
 
     else:

@@ -14,8 +14,8 @@ def tester():
     print(parser("+15122842178","create c972c797-2595-4fb6-91e4-0547ef268c80 1G4kUxVk8wEfKCwNehmP9Fot4pAnAJMAaY C1rissalazar", test_bank))
 
     #gives their acount_info alex
-    print(parser("+17208378697","acount_info",test_bank))
-    #gives the balance
+    print(parser("+17208378697","account_info",test_bank))
+    #gives the  
     print(parser("+17208378697","balance",test_bank))
 
         #gives their acount_info sam
