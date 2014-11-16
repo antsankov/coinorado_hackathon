@@ -44,23 +44,8 @@ def get_satoshis(string, debug = False):
 		btc = blockchain.exchangerates.to_btc(ccy, string, 'c62026c6-89e3-4200-93a9-f51250ad1ea5')
 		return btc * spb
 	return -1
-# def test():
-# 	print get_satoshis("20",True)
-# 	print get_satoshis("20.0",True)
-# 	print get_satoshis("-20",True)
-# 	print get_satoshis("b20",True)
-# 	print get_satoshis("$20",True)
-# 	print get_satoshis("£20",True)
-# 	print get_satoshis("€20",True)
-# 	print get_satoshis("¥20",True)
-# 	print get_satoshis("$-20",True)
-# 	print get_satoshis("£-20",True)
-# 	print get_satoshis("€-20",True)
-# 	print get_satoshis("¥-20",True)
-# 	print get_satoshis("£-5.55",True)
-# 	print get_satoshis("$-5.55",True)
-# 	print get_satoshis("€-5.55",True)
-# 	print get_satoshis("¥-5.55",True)
+
+
 
 
 

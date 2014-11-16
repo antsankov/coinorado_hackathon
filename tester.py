@@ -28,11 +28,16 @@ def tester():
     #gives the balance
     print(parser("+15122842178","balance",test_bank))
 
+    print(parser("+15122842178","bxb +17209991335 1000" ,test_bank))
+
+
+
+
+
     #account_to_person(account,desitnation_phone,permission,actual_amount)
     #print (parser("+17208378697","a"))
 
     #add a dupilicate tester 
-    #print(parser("+17208378697","combine 4620ffe2-86d6-4b63-ac16-4b8decfaa6f5 1KoQFBAEASCykCmnvK4kz7FRV4a1bqQu1Q" ,test_bank))
     #gives the balance
     #print(parser("+17208378697","balance",test_bank))
     # print(parser("+17208378697","add +17208378675",test_bank))

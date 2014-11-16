@@ -94,7 +94,7 @@ def parser(origination_number,input,bank):
             
             act = bank.get_account(accountID)
             deposit(act,caller,amount)
-            return "SUCCESS " + input
+            return ("SUCCESS " + input)
 
         else:
             return "Invalid/Unknown account"
@@ -102,10 +102,9 @@ def parser(origination_number,input,bank):
     if (verb == "bxb"):
         pn = mod_input[1]
         amount = mod_input[2]
-        tip = mod_input[3]
 
         #check if amount is valid
-        amount = get_satoshis(amount)
+        #amount = get_satoshis(amount)
         if(amount < 0):
             return "Invalid quantity specified: amount must be a valid currency valued at greater than 1 satoshi"
 
@@ -114,7 +113,7 @@ def parser(origination_number,input,bank):
         else: 
             act = bank.get_account(accountID)
             deposit(act,caller,amount,15000)
-            return "SUCCESS " + input
+            return ("SUCCESS " + input)
 
     else:
         return "Invalid/Unknown account"
