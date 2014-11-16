@@ -28,7 +28,7 @@ def tester():
     #gives the balance
     print(parser("+15122842178","balance",test_bank))
 
-    print(parser("+15122842178","bxb +17209991335 1000" ,test_bank))
+    #print(parser("+15122842178","bxb +17209991335 1000" ,test_bank))
 
 
 
