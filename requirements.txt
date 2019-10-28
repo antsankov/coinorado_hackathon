@@ -18,7 +18,7 @@ simplejson==3.6.5
 six==1.8.0
 twilio==3.6.9
 update-checker==0.10
-urllib3==1.9.1
+urllib3==1.24.2
 
 virtualenv==1.11.6
 wsgiref==0.1.2
