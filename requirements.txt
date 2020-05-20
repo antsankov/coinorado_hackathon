@@ -8,7 +8,7 @@ blockchain==1.1.1
 ecdsa==0.13.3
 
 gunicorn==19.1.1
-httplib2==0.9
+httplib2==0.18.0
 
 
 pathtools==0.1.2
